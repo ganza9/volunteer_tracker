@@ -1,9 +1,13 @@
 class Volunteer
-  attr_accessor(:name, :project_id)
+  attr_accessor(:name, :project_id, :id)
 
   def initialize(attributes)
     @name = attributes.fetch(:name)
     @project_id = attributes.fetch(:project_id)
+    @id = attributes.fetch(:id)
   end
 
+  def ==(another_volunteer)
+  self.name().==(another_volunteer.name()).&(self.project_id().==(another_volunteer.project_id()))
+end
 end
