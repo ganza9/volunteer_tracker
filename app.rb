@@ -5,7 +5,7 @@ require("./lib/volunteer")
 require("./lib/project")
 require("pg")
 
-# DB = PG.connect({:dbname => "volunteer_tacker"})
+DB = PG.connect({:dbname => "volunteer_tracker"})
 
 get('/')do
   erb(:index)
