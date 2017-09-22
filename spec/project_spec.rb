@@ -1,8 +1,9 @@
-require "volunteer"
-require "project"
-require "rspec"
-require "pry"
-require "pg"
+require("sinatra")
+require("sinatra/reloader")
+also_reload("lib/**/*.rb")
+require("./lib/volunteer")
+require("./lib/project")
+require("pg")
 require "spec_helper"
 
 describe Project do

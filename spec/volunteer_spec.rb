@@ -1,8 +1,9 @@
-require "volunteer"
-require "project"
-require "rspec"
-require "pry"
-require "pg"
+require("sinatra")
+require("sinatra/reloader")
+also_reload("lib/**/*.rb")
+require("./lib/volunteer")
+require("./lib/project")
+require("pg")
 
 describe Volunteer do
   describe '#name' do
@@ -39,7 +40,7 @@ describe Volunteer do
       expect(Volunteer.all).to eq [volunteer1, volunteer2]
     end
   end
-  
+
   describe '#save' do
     it 'adds a volunteer to the database' do
       volunteer1 = Volunteer.new({:name => 'Jane', :project_id => 1, :id => nil})
