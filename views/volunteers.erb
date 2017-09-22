@@ -1,0 +1,17 @@
+<h1>Volunteers</h1>
+
+
+<% if @volunteers.any?() %>
+  <h3>Here are your volunteers:</h3>
+
+<ul>
+  <% @volunteers.each() do |volunteer| %>
+  <li><a href="/volunteers/<%= volunteer.id() %>"><%= volunteer.name()%>></a></li>
+  <% end %>
+</ul>
+
+<% else %>
+
+  <p>There are no volunteers signed up yet!</p>
+
+<% end %>
