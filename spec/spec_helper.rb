@@ -5,7 +5,7 @@ require("./lib/volunteer")
 require("./lib/project")
 require("pg")
 
-DB = PG.connect({:dbname => 'volunteer_tracker'})
+# DB = PG.connect({:dbname => 'volunteer_tracker'})
 
 RSpec.configure do |config|
   config.after(:each) do

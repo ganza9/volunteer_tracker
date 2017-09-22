@@ -1,5 +1,5 @@
 require "capybara/rspec"
-require('./app')
+# require('./app')
 require("sinatra")
 require("sinatra/reloader")
 also_reload("lib/**/*.rb")
