@@ -16,24 +16,24 @@ get('/volunteers')do
   erb(:volunteers)
 end
 
+get('/volunteer')do
+  @volunteer = Volunteer.find(params.fetch(:id).to_i)
+  erb(:volunteer)
+end
+
 get('/volunteers/new')do
   erb(:volunteer_form)
 end
 
-get('/volunteer/:id')do
-  @volunteer = Volunteer.find(params.fetch(:id).to_i)
-  erb(:volunteer_detail)
-end
-
 post('/volunteers')do
   name = params.fetch("name")
-  volunteer = Volunteer.new({:name => name, :project_id => project_id, :id => nil})
-  volunteer.save()
+  @volunteer = Volunteer.new({:name => name, :id => nil})
+  @volunteer.save()
   erb(:success)
 end
 
 get('/projects')do
-  @projects = Projects.all()
+  @projects = Project.all()
   erb(:projects)
 end
 
@@ -57,7 +57,7 @@ post('/projects')do
   title = params.fetch("title")
   volunteer_id = params.fetch("volunteer_id").to_i()
   @volunteer = Volunteer.find(volunteer_id)
-  @project = Project.new({:title => title, :project_id => project_id, :id => nil})
+  @project = Project.new({:title => title, :id => nil})
   @project.save()
   erb(:success)
 end
