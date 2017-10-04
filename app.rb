@@ -26,10 +26,11 @@ get('/volunteers/new')do
 end
 
 post('/volunteers')do
-  name = params.fetch("name")
+  @name = params.fetch("name")
   @volunteer = Volunteer.new({:name => name, :id => nil})
   @volunteer.save()
-  erb(:success)
+  @volunteers = Volunteer.all
+  erb(:volunteers)
 end
 
 get('/projects')do

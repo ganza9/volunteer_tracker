@@ -14,7 +14,7 @@ Go to https://github.com/ganza9/volunteer_tracker and click on the clone or down
 
 Known Bugs
 
-When the user inputs any information, there is a bug.
+When the user inputs any information, there is a bug. 
 
 Support and contact details
 
