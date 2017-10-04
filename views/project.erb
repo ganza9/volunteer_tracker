@@ -1,0 +1,41 @@
+<div class="container">
+
+  <% if @project.volunteers().any?() %>
+    <h3>Here are all the Volunteers in this list:</h3>
+
+    <ul>
+      <% @project.volunteers().each() do |volunteer| %>
+        <li><%= volunteer.name() %> </li>
+      <% end %>
+    </ul>
+
+  <% else %>
+    <h3>There are no volunteers on this list!</h3>
+  <% end %>
+
+
+  <h3>Add a Volunteer to <%= @project.title() %></h3>
+
+  <form action="/volunteers" method="post">
+    <input type="hidden" id="project_id" name="project_id" value=" <%= @project.id() %>">
+
+    <label for="name">Name</label>
+    <input id="name" name="name" type ="text"><a href="/volunteers"></a><button type="submit" class="btn btn-info">Add Volunteer</button>
+
+
+    <br>
+    <br>
+    <a href="/projects/new"><button class="btn btn-success pull-left">Add New Project</button></a>
+    <a href="/project/edit/<%=@project.id%>"><button class="btn btn-primary pull-left">Edit Project</button></a>
+    <form class="form-group" action="/projects/<%=@project.id%> " method="post">
+      <input type="hidden" name="_method" value="delete">
+      <button type="submit" class="btn button btn-danger pull-left">Delete This Project</button>
+
+    </form>
+    <br>
+    <br>
+    <a href="/projects">Return To Project List</a>
+    <br>
+    <a href="/">Return Home</a>
+  </form>
+</div>

@@ -4,6 +4,7 @@ class Project
   def initialize(attributes)
     @title = attributes.fetch(:title)
     @id = attributes.fetch(:id)
+    @volunteers = []
   end
 
   def ==(another_project)
@@ -27,7 +28,7 @@ class Project
     @id = result.first().fetch('id').to_i()
   end
 
-  def self.find
+  def self.find(id)
     found_project = nil
     Project.all().each() do |project|
       if project.id().==(id)
@@ -52,9 +53,9 @@ class Project
     project_volunteers = []
     volunteers = DB.exec("SELECT * FROM volunteers WHERE project_id = '#{self.id()}';")
     volunteers.each() do |volunteer|
-      name = volunteer.fetch("name")
-      project_id = volunteer.fetch("project_id").to_i
-      id = volunteer.fetch("id").to_i
+      name = volunteer.name("name")
+      project_id = volunteer.project_id("project_id").to_i
+      id = volunteer.id("id").to_i
       project_volunteers.push(Volunteer.new({name: name, project_id: project_id, id: id}))
     end
     project_volunteers
